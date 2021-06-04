@@ -4,7 +4,7 @@ RUN apk add --no-cache curl
 # Download the protobuffer compiler and make it available to be able to use
 # in the golang container.
 # The last three lines (the ones with chmod) are necessary to make the protoc
-# folder available to everybody. The official release sais to install it in
+# folder available to everybody. The official release says to install it in
 # your home directory and the files only give permissions to the user and
 # group. We want to have it available for everybody, so we have to extend
 # the (read and execute) permissions.

@@ -1,4 +1,4 @@
-FROM alpine as builder
+FROM alpine AS builder
 
 RUN apk add --no-cache curl
 # Download the protobuffer compiler and make it available to be able to use
@@ -26,7 +26,8 @@ COPY --from=builder  /shared/protoc /usr/local/protoc
 # install the protobuffer plugins to generate go code and grpcurl
 RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest && \
     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest && \
-    go get github.com/fullstorydev/grpcurl/... && \
+    go install github.com/fullstorydev/grpchan/cmd/protoc-gen-grpchan@latest && \
+    go install github.com/fullstorydev/grpcurl/... && \
     go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
 
 ENV PATH="/usr/local/protoc/bin:$PATH"
